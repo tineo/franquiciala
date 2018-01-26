@@ -18,6 +18,7 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
    (isset($_POST["nfran"])     || array_key_exists("nfran", $_POST)) &&
    (isset($_POST["det"]) || array_key_exists("det", $_POST))) {
 
+	global $destinatario;
 	// usar tu plantilla :v
 	include_once ('../sendmail.php');
 	$sent = false; //estado del envio
@@ -28,7 +29,7 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
 	try{
 		if(!empty(getenv("SENDGRID_API_KEY")) || !mail($destinatario,$asunto,$cuerpo,$headers)){
 			include_once ('meowler.php');
-			if(empty($destinatario)) $destinatario = "itsudatte01@gmail.com";
+			if(empty($destinatario)) {$destinatario = "itsudatte01@gmail.com";}
 			if(meow($destinatario,$asunto,$cuerpo,$headers)){
 				$sent = true;
 			}
