@@ -56,7 +56,8 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
 		http_response_code(500);
 		echo json_encode(
 			array(
-				"msj" => "ALGO SALIO MAIL CON SU EMAIL. VERIFIQUE SU CUENTA"));
+				"msj" => "ALGO SALIO MAIL CON SU EMAIL. VERIFIQUE SU CUENTA",
+				"to" => $var1));
 	}
 
 
