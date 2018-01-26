@@ -30,3 +30,30 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  $(function(){
+    var u = $("#form-username");
+    var p = $("#form-password");
+
+    var $myForm = $('.login-form');
+
+    $(".login-form button").on("click",function(event){
+      if ($myForm[0].checkValidity()) {
+        event.preventDefault();
+
+        $.ajax({
+          method: "POST",
+          url: "ajax/login.php",
+          data: {uname: u.val(), pswd: p.val()}
+        }).done(function (data) {
+          window.location.replace("http://"+window.location.host+"/perfilad.php");
+        });
+
+        //console.log(u.val());
+        //console.log(p.val());
+      }
+    });
+  });
+</script>

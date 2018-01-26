@@ -73,11 +73,11 @@ $headers .= "Reply-To: robot@franquiciala.com\r\n";
 $headers .= "Bcc: yvelasquezq@gmaiL.com\r\n";
 
 
+//Se debe validar el envio ~_~
+//mail($destinatario,$asunto,$cuerpo,$headers)
 
-mail($destinatario,$asunto,$cuerpo,$headers)
 
-
+//Hahahaha no mas redireccion
+//<META HTTP-EQUIV="Refresh" CONTENT="0; URL=index.php">
 
 ?>
-
-<META HTTP-EQUIV="Refresh" CONTENT="0; URL=index.php">

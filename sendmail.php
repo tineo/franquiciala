@@ -87,11 +87,10 @@ $headers .= "Reply-To: robot@franquiciala.com\r\n";
 //$headers .= "Bcc: yvelasquez@ks.comp.pe,juan@juan.com\r\n";
 
 
+//Se debe validar el envio ~_~
+//mail($destinatario,$asunto,$cuerpo,$headers)
 
-mail($destinatario,$asunto,$cuerpo,$headers)
-
-
-
+// Hahaha otra vez redireccionando con html :V
+/*<META HTTP-EQUIV="Refresh" CONTENT="0; URL=franquicias.php?idf=<? echo $_POST['idfran']; ?>&nom=<? echo $_POST['nfran']; ?>">
+*/
 ?>
-
-<META HTTP-EQUIV="Refresh" CONTENT="0; URL=franquicias.php?idf=<? echo $_POST['idfran']; ?>&nom=<? echo $_POST['nfran']; ?>">

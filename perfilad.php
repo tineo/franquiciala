@@ -1,4 +1,15 @@
 <? include("rutadb.php"); ?>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+
+	//var_dump($_SESSION);
+
+	if(!isset($_SESSION["uid"])){
+		header("Location: index.php"); exit;
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +80,7 @@
     </div>
     <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. DE FRANQUICIA</strong></div>
     <div class="row">
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Inicio de Operaciones: <input type="number" name="iperacion" class="form-control" placeholder="Año de inicio (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;">Inicio de Operaciones: <input type="number" name="iperacion" class="form-control" placeholder="Aï¿½o de inicio (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Pais de Origen: 
   <select class="form-control" id="porigen" required>
     <option>Peru</option>
@@ -80,14 +91,14 @@
 		</div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Paises en que Opera: <input type="number" name="popera" class="form-control" placeholder="Numero de Paises (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Total de Unidades: <input type="number" name="unidades" class="form-control" placeholder="Numero de unidades (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Objetivos de Expansión: <input type="text" name="expansion" class="form-control" placeholder="Objetivo de Expansion (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;">Objetivos de Expansiï¿½n: <input type="text" name="expansion" class="form-control" placeholder="Objetivo de Expansion (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
     </div>
 
     <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. ECONOMICA</strong></div>
     <div class="row">
       <div class="col-md-4 col-sm-6" style="padding:5px;">Canon de entrada ($): <input type="number" name="canon" class="form-control" placeholder="Canon de entrada (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Inversión inicial ($): <input type="number" name="iinicial" class="form-control" placeholder="Inversión inicial (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;">Inversiï¿½n inicial ($): <input type="number" name="iinicial" class="form-control" placeholder="Inversiï¿½n inicial (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Regalia ($): <input type="number" name="regalia" class="form-control" placeholder="Regalia (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Cuota de publicidad ($): <input type="number" name="cuota" class="form-control" placeholder="Cuota de publicidad (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Capital requerido ($): <input type="number" name="capital" class="form-control" placeholder="Capital requerido (*)" required></div>
@@ -96,16 +107,16 @@
     
     <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. OPERATIVA</strong></div>
     <div class="row">
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Duración del contrato: <input type="number" name="tcontrato" class="form-control" placeholder="Duración del contrato (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;">Duraciï¿½n del contrato: <input type="number" name="tcontrato" class="form-control" placeholder="Duraciï¿½n del contrato (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Requiere experiencia:
   <select class="form-control" id="experiencia" required>
     <option>No</option>
     <option>Si</option>
   </select>
 		</div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Tamaño de local (m2): <input type="number" name="tamanolo" class="form-control" placeholder="Tamaño de local (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;">Tamaï¿½o de local (m2): <input type="number" name="tamanolo" class="form-control" placeholder="Tamaï¿½o de local (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;">Empleados por local: <input type="number" name="empleados" class="form-control" placeholder="Empleados por local (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Ubicación preferible: <input type="text" name="ubicacionpre" class="form-control" placeholder="Ubicación preferible (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;">Ubicaciï¿½n preferible: <input type="text" name="ubicacionpre" class="form-control" placeholder="Ubicaciï¿½n preferible (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
     </div>
 

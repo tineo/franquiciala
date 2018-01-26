@@ -29,7 +29,7 @@
       });
     </script>
 
-    <!--estilos galería-->
+    <!--estilos galer?a-->
     <style>
       ul {         
           padding:0 0 0 0;
@@ -73,7 +73,7 @@
             }
         }
     </style>
-    <!--fin estilos galería-->
+    <!--fin estilos galer?a-->
 
 </head> 
 
@@ -290,13 +290,13 @@
 <div style="padding:30px 0; background:#fc9a00; color:#fff;" align="center">
   <span style="font-size:24px;">Reg&iacute;strate en nuestro Boletin</span><br>
   <p style="color:#fedbb9">Proximamente recibiras las &uacute;ltimas novedades y ent&eacute;rate primero de las empresas que est&aacute;n interesadas en franquiciar. Inscr&iacute;bete ahora!</p>
-<form id="form1" name="form1" method="post" action="index.php">
+<form id="form1" name="form1">
   <div class="container" align="center">
     <div class="row" style="width:70%;">
       <div class="col-md-10 col-sm-10 col-xs-9"><input name="corr" type="email" class="form-control" placeholder="Ingresa tu correo electr&oacute;nico" required></div>
       <div class="col-md-2 col-sm-2 col-xs-3" align="left">
       <input type="hidden" value="1" name="regbol">
-      <input type="submit" name="button" id="button" value="Registrarme" class="btn btn-danger"></div>
+      <input type="submit" name="button" id="envia" value="Registrarme" class="btn btn-danger"></div>
     </div>
   </div>
 </form>
@@ -355,10 +355,63 @@ $(function(){
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  // AJAX
+  $(function(){
+    //corr (email)
+
+    var $myForm = $('#form1');
+
+    var email = $("input[name='corr']");
+
+    $("#envia").on('click',function(event) {
+      if ($myForm[0].checkValidity()) {
+        event.preventDefault();
+        $.ajax({
+          method: "POST",
+          url: "ajax/form_boletin.php",
+          data: {
+            corr: email.val(),
+          }
+        }).done(function( data ) {
+
+          $("#myModalBody").text(data.msj);
+          $('#myModal').modal('show');
+
+        });
+      }
+    });
+
+  });
+</script>
+
 </html>
 <?
 //Insertar email boletin
-if ($_POST['regbol']=='1') {
-	mysql_query("INSERT INTO `boletin` ( `correo`)  VALUES ('$_POST[corr]')",	$conexion) or die("Problemas en el select".¿mysql_error());
-}
+// Se valida antes de usar $_POST
+// Reemplazado por form_boletin.php
+//if ($_POST['regbol']=='1') {
+//	mysql_query("INSERT INTO `boletin` ( `correo`)  VALUES ('$_POST[corr]')",	$conexion) or die("Problemas en el select".mysql_error());
+//}
 ?>

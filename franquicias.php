@@ -356,23 +356,23 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <span class="small">(*) Datos requeridos obligatoriamente.</span>
     </div>
-<form role="form" method="post" data-toggle="validator" action="sendmail.php">
+<form role="form" data-toggle="validator">
     <div class="row">
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="nom" type="text" pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="Nombre(s) (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="ape" type="text" pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="Apellidos (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="ema" type="email" class="form-control" placeholder="Correo electr?nico (*)" data-pattern-error="123456 Hola como estas" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="pai" type="text" pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="Pa?s (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="pai" type="text" pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="Pa&iacute;s (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="ciu" type="text" pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="Ciudad (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="tel" type="number" min="7" class="form-control" placeholder="Tel?fono (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="tel" type="number" min="7" class="form-control" placeholder="Tel&eacute;fono (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="eda" type="number" class="form-control" placeholder="Edad"></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="inv" type="number" class="form-control" placeholder="Monto de inversi?n disponible (*)" required></div>
+      <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="inv" type="number" class="form-control" placeholder="Monto de inversi&iacute;n disponible (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
-      <div class="col-md-12 col-sm-12" style="padding:5px;"><textarea name="det" class="form-control" placeholder="Comentarios y/o preguntas (*)" rows="3"></textarea></div>
+      <div class="col-md-12 col-sm-12" style="padding:5px;"><textarea name="det" id="det" class="form-control" placeholder="Comentarios y/o preguntas (*)" rows="3"></textarea></div>
       <div style="clear:both;"></div>
       <div align="center" style="padding:20px;">
       	<input type="hidden" value="<? echo $_GET['idf']; ?>" name="idfran">
         <input type="hidden" value="<? echo $_GET['nom']; ?>" name="nfran">
-      	<button class="btn btn-warning" type="submit">Enviar</button> <button class="btn btn-default" type="submit">Limpiar</button>
+      	<button class="btn btn-warning" type="submit" id="envia">Enviar</button> <button class="btn btn-default" type="submit">Limpiar</button>
       </div>
     </div>
 </form>
@@ -429,5 +429,85 @@ $(function(){
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  // AJAX
+  $(function(){
+    //nombre
+    //apellido
+    //cargo
+    //email
+    //telefono
+    //empresa
+    //marca
+    //web
+    //actividad
+
+    var $myForm = $('#form1');
+
+    var nombre = $("input[name='nom']");
+    var apellido = $("input[name='ape']");
+    var email = $("input[name='ema']");
+    var ciudad = $("input[name='ciu']");
+    var pais = $("input[name='pai']");
+    var telefono = $("input[name='tel']");
+
+    var edad = $("input[name='eda']");
+    var monto = $("input[name='inv']");
+
+    var idfran = $("input[name='idfran']");
+    var nfran = $("input[name='nfran']");
+
+    var cometarios = $("#det");
+
+    $("#envia").on('click',function(event) {
+      if ($myForm[0].checkValidity()) {
+        event.preventDefault();
+        $.ajax({
+          method: "POST",
+          url: "ajax/form_franquicia.php",
+          data: {
+            nom: nombre.val(),
+            ape: apellido.val(),
+
+            ema: email.val(),
+            pai: pais.val(),
+            ciu: ciudad.val(),
+            tel: telefono.val(),
+            eda: edad.val(),
+            inv: monto.val(),
+            idfran: idfran.val(),
+            nfran: nfran.val(),
+            det: cometarios.val()
+          }
+        }).done(function( data ) {
+          $("#myModalBody").text(data.msj);
+          $('#myModal').modal('show');
+        });
+      }
+    });
+
+  });
+</script>
 
 </html> 

@@ -75,7 +75,7 @@
 <p>Tienes muchas razones para ser parte de nuestra plataforma, inicia tu registro y desc&uacute;brelas con nuestro equipo de registro.</p>
     </span>
   </div>
-<form id="form1" name="form1" method="post" action="sendregis.php">
+<form id="form1" name="form1">
   <div class="descFran">
     <div>
       <span class="fa-stack fa-1x" style="color:#fc9a00;">
@@ -101,7 +101,7 @@
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input type="text" name="empresa" class="form-control" placeholder="Nombre de la Empresa(*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input type="text" name="marca" class="form-control" placeholder="Marca de la Franquicia (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input type="web" name="web" class="form-control" placeholder="P&aacute;gina web"></div>
-      <div class="col-md-12 col-sm-12" style="padding:5px;"><textarea name="activ" class="form-control" placeholder="Actividad comercial (*)" rows="3" required></textarea></div>
+      <div class="col-md-12 col-sm-12" style="padding:5px;"><textarea name="activ" id="activ" class="form-control" placeholder="Actividad comercial (*)" rows="3" required></textarea></div>
       <div style="padding:5px;"><a href="#" target="_blank" style="text-decoration:none"><button type="button" class="btn btn-danger">Ver terminos y condiciones</button></a></div>
     </div>
 
@@ -140,5 +140,80 @@ $(function(){
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  // AJAX
+  $(function(){
+    //nombre
+    //apellido
+    //cargo
+    //email
+    //telefono
+    //empresa
+    //marca
+    //web
+    //actividad
+
+    var $myForm = $('#form1');
+
+    var nombre = $("input[name='nombre']");
+    var apellido = $("input[name='apellido']");
+    var cargo = $("input[name='cargo']");
+    var email = $("input[name='email']");
+    var telefono = $("input[name='telefono']");
+    var empresa = $("input[name='empresa']");
+    var marca = $("input[name='marca']");
+    var web = $("input[name='web']");
+    var actividad = $("#activ");
+
+    $("#envia").on('click',function(event) {
+      if ($myForm[0].checkValidity()) {
+        event.preventDefault();
+        $.ajax({
+          method: "POST",
+          url: "ajax/form_afiliacion.php",
+          data: {
+            nombre: nombre.val(),
+            apellido: apellido.val(),
+            cargo: cargo.val(),
+            email: email.val(),
+            telefono: telefono.val(),
+            empresa: empresa.val(),
+            marca: marca.val(),
+            web: web.val(),
+            activ: actividad.val()
+          }
+        }).done(function( data ) {
+          $("#myModalBody").text(data.msj);
+          $('#myModal').modal('show');
+        });
+      }
+    });
+
+  });
+</script>
+
+
 
 </html> 
