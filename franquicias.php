@@ -356,7 +356,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;
       <span class="small">(*) Datos requeridos obligatoriamente.</span>
     </div>
-<form role="form" data-toggle="validator">
+<form role="form" data-toggle="validator" id="form1">
     <div class="row">
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="nom" type="text" pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="Nombre(s) (*)" required></div>
       <div class="col-md-4 col-sm-6" style="padding:5px;"><input name="ape" type="text" pattern="^[_A-z0-9]{1,}$" class="form-control" placeholder="Apellidos (*)" required></div>
