@@ -10,9 +10,9 @@ require_once '../vendor/autoload.php';
 
 function meow($destinatario,$asunto,$cuerpo,$headers) {
   // Create the Transport
-  $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-    ->setUsername('unmailfulano@gmail.com')
-    ->setPassword('996666567');
+  $transport = (new Swift_SmtpTransport(getenv("MAILGUN_SMTP_SERVER"), getenv("MAILGUN_SMTP_PORT"), 'ssl'))
+    ->setUsername(getenv("MAILGUN_SMTP_LOGIN"))
+    ->setPassword(getenv("MAILGUN_SMTP_PASSWORD"));
 
   // Create the Mailer using your created Transport
   $mailer = new Swift_Mailer($transport);
