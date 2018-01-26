@@ -5,20 +5,18 @@
  * Date: 26/01/18
  * Time: 03:00 PM
  */
-require_once 'vendor/autoload.php';
+require 'vendor/autoload.php';
 
-$transport = (new Swift_SmtpTransport(getenv("MAILGUN_SMTP_SERVER"), getenv("MAILGUN_SMTP_PORT"), 'ssl'))
-	->setUsername(getenv("MAILGUN_SMTP_LOGIN"))
-	->setPassword(getenv("MAILGUN_SMTP_PASSWORD"));
+$from = new SendGrid\Email(null, "cesar@franquiciala.heroku.com");
+$subject = "Hello World from the SendGrid PHP Library!";
+$to = new SendGrid\Email(null, "itsudatte01@gmail.com");
+$content = new SendGrid\Content("text/plain", "Test email");
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
 
-// Create the Mailer using your created Transport
-$mailer = new Swift_Mailer($transport);
+$apiKey = getenv('SENDGRID_API_KEY');
+$sg = new \SendGrid($apiKey);
 
-// Create a message
-$message = (new Swift_Message("Test"))
-	->setFrom(['cesar@tineo.mobi' => 'Cesar Gutierrez Tineo ;D'])
-	->setTo(["itsudatte01@gmail.com"])
-	->setBody("Desde heroku", 'text/html');
-
-// Send the message
-echo $mailer->send($message);
+$response = $sg->client->mail()->send()->post($mail);
+echo $response->statusCode();
+echo $response->headers();
+echo $response->body();
