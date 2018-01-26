@@ -70,57 +70,212 @@ if (session_status() == PHP_SESSION_NONE) {
     <div>
     </div>
     <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. GENERAL</strong></div>
-    <div class="row">
-	  <div class="col-md-8 col-sm-12" style="padding:5px;">Logo de la Marca:<br><input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true"></div>
-      <div class="col-md-8 col-sm-12" style="padding:5px;">Descripcion:<br><textarea class="form-control" placeholder="Descripcion (*)" rows="4" required></textarea></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Correo electronico:<br/><input type="email" name="correo" class="form-control" placeholder="Correo electronico @ (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Pagina web:<br/><input type="site" name="paweb" class="form-control" placeholder="www Pagina Web (*)" required></div>
-      <div class="col-md-12 col-sm-6" style="padding:5px;">URL Video Institucional:<br/><input type="text" name="urlvideo" class="form-control" placeholder="URL Video institucional (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
-    </div>
-    <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. DE FRANQUICIA</strong></div>
-    <div class="row">
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Inicio de Operaciones: <input type="number" name="iperacion" class="form-control" placeholder="A�o de inicio (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Pais de Origen: 
-  <select class="form-control" id="porigen" required>
-    <option>Peru</option>
-    <option>Brazil</option>
-    <option>Chile</option>
-    <option>Colombia</option>
-  </select>
-		</div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Paises en que Opera: <input type="number" name="popera" class="form-control" placeholder="Numero de Paises (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Total de Unidades: <input type="number" name="unidades" class="form-control" placeholder="Numero de unidades (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Objetivos de Expansi�n: <input type="text" name="expansion" class="form-control" placeholder="Objetivo de Expansion (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
-    </div>
 
-    <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. ECONOMICA</strong></div>
-    <div class="row">
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Canon de entrada ($): <input type="number" name="canon" class="form-control" placeholder="Canon de entrada (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Inversi�n inicial ($): <input type="number" name="iinicial" class="form-control" placeholder="Inversi�n inicial (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Regalia ($): <input type="number" name="regalia" class="form-control" placeholder="Regalia (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Cuota de publicidad ($): <input type="number" name="cuota" class="form-control" placeholder="Cuota de publicidad (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Capital requerido ($): <input type="number" name="capital" class="form-control" placeholder="Capital requerido (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
-    </div>
-    
-    <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. OPERATIVA</strong></div>
-    <div class="row">
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Duraci�n del contrato: <input type="number" name="tcontrato" class="form-control" placeholder="Duraci�n del contrato (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Requiere experiencia:
-  <select class="form-control" id="experiencia" required>
-    <option>No</option>
-    <option>Si</option>
-  </select>
-		</div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Tama�o de local (m2): <input type="number" name="tamanolo" class="form-control" placeholder="Tama�o de local (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Empleados por local: <input type="number" name="empleados" class="form-control" placeholder="Empleados por local (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;">Ubicaci�n preferible: <input type="text" name="ubicacionpre" class="form-control" placeholder="Ubicaci�n preferible (*)" required></div>
-      <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
-    </div>
+      <div class="row">
+          <div class="col-sm-8">
 
-    <div style="clear:both;"></div>
+              <div class="row">
+                  <div class="col-md-8 col-sm-12" style="padding:5px;">Descripcion:<br><textarea class="form-control" placeholder="Descripcion (*)" rows="4" required></textarea></div>
+                  <div class="col-md-4 col-sm-6" style="padding:5px;">Correo electronico:<br/><input type="email" name="correo" class="form-control" placeholder="Correo electronico @ (*)" required></div>
+                  <div class="col-md-4 col-sm-6" style="padding:5px;">Pagina web:<br/><input type="site" name="paweb" class="form-control" placeholder="www Pagina Web (*)" required></div>
+                  <div class="col-md-12 col-sm-6" style="padding:5px;">URL Video Institucional:<br/><input type="text" name="urlvideo" class="form-control" placeholder="URL Video institucional (*)" required></div>
+                  <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
+              </div>
+
+          </div>
+
+          <div class="col-sm-4">
+
+              <div class="col-md-8 col-sm-12" style="padding:5px;">Logo de la Marca:<br><input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true"></div>
+
+          </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="col-sm-4">
+
+              <div class="row">
+                  <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. DE FRANQUICIA</strong></div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      Inicio de Operaciones: </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="iperacion" class="form-control" placeholder="A&nacute;o de inicio (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Pais de Origen:</div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <select class="form-control" id="porigen" required>
+                          <option>Peru</option>
+                          <option>Brazil</option>
+                          <option>Chile</option>
+                          <option>Colombia</option>
+                      </select>
+                  </div>
+
+                  <div class="col-sm-6" style="padding:5px;">Paises en que Opera: </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="popera" class="form-control" placeholder="Numero de Paises (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Total de Unidades: </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="unidades" class="form-control" placeholder="Numero de unidades (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Objetivos de Expansi&oacute;n: </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="text" name="expansion" class="form-control" placeholder="Objetivo de Expansi&oacute;n (*)" required />
+                  </div>
+
+                  <div class="col-sm-6" style="padding:5px;"></div>
+              </div>
+
+          </div>
+          <div class="col-sm-4">
+
+              <div class="row">
+                  <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. ECONOMICA</strong></div>
+                  <div class="col-sm-6" style="padding:5px;">Canon de entrada ($): </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="canon" class="form-control" placeholder="Canon de entrada (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Inversi&oacute;n inicial ($): </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="iinicial" class="form-control" placeholder="Inversi&oacute;n inicial (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Regalia ($): </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="regalia" class="form-control" placeholder="Regalia (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Cuota de publicidad ($): </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="cuota" class="form-control" placeholder="Cuota de publicidad (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Capital requerido ($): </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="capital" class="form-control" placeholder="Capital requerido (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;"></div>
+              </div>
+
+          </div>
+          <div class="col-sm-4">
+
+              <div class="row">
+                  <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. OPERATIVA</strong></div>
+                  <div class="col-sm-6" style="padding:5px;">Duraci&oacute;n del contrato: </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="tcontrato" class="form-control" placeholder="Duraci&oacute;n del contrato (*)" required/>
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Requiere experiencia:</div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <select class="form-control" id="experiencia" required>
+                          <option>No</option>
+                          <option>Si</option>
+                      </select>
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Tama&nacute;o de local (m2): </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="tamanolo" class="form-control" placeholder="Tama&nacute;o de local (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Empleados por local: </div><div class="col-sm-6" style="padding:5px;">
+                      <input type="number" name="empleados" class="form-control" placeholder="Empleados por local (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;">Ubicaci&oacute;n preferible: </div>
+                  <div class="col-sm-6" style="padding:5px;">
+                      <input type="text" name="ubicacionpre" class="form-control" placeholder="Ubicaci&oacute;n preferible (*)" required />
+                  </div>
+                  <div class="col-sm-6" style="padding:5px;"></div>
+              </div>
+
+          </div>
+
+      </div>
+
+      <div class="row">
+          <div class="col-sm-6">
+              <div style="padding:18px 0; color:#fc9a00;"><strong>GALERIA DE FOTOS</strong></div>
+              <div class="row">
+                  <div class="col-sm-12" style="padding:5px;">
+                      <input id="input-2" name="input2[]"
+                             type="file" class="file" multiple
+                             data-show-upload="false" data-show-caption="true">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://575717b777ff8d928c6b-704c46a8034042e4fc898baf7b3e75d9.ssl.cf1.rackcdn.com/17149838_it-director-tapped-for-robotech_tf2185cbe.jpg" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+
+
+              </div>
+          </div>
+          <div class="col-sm-6">
+              <div style="padding:18px 0; color:#fc9a00;"><strong>BANNERS</strong></div>
+              <div class="row">
+                  <div class="col-sm-12" style="padding:5px;">
+                      <input id="input-2" name="input2[]"
+                             type="file" class="file" multiple
+                             data-show-upload="false" data-show-caption="true">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://575717b777ff8d928c6b-704c46a8034042e4fc898baf7b3e75d9.ssl.cf1.rackcdn.com/17149838_it-director-tapped-for-robotech_tf2185cbe.jpg" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+                  <div class="col-sm-3" style="padding:5px;">
+                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                  </div>
+
+
+              </div>
+          </div>
+      </div>
+
     <div align="center" style="padding:20px;">
     	<input type="submit" name="envia" id="envia" class="btn btn-warning" value="Actualizar Informacion">
     	<input type="reset" name="limpia" id="limpia" class="btn btn-default" value="Cancelar">
