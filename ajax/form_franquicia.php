@@ -26,7 +26,7 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
 	//Es para poder enviar mails sin mail() sobre smtp
 	//La magia
 	try{
-		if(!mail($destinatario,$asunto,$cuerpo,$headers)){
+		if(TRUE){
 			include_once ('meowler.php');
 			if(empty($destinatario)) $destinatario = "itsudatte01@gmail.com";
 			if(meow($destinatario,$asunto,$cuerpo,$headers)){
