@@ -27,10 +27,10 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
 	//Es para poder enviar mails sin mail() sobre smtp
 	//La magia
 	try{
-		if(!empty(getenv("SENDGRID_API_KEY")) || !mail($destinatario,$asunto,$cuerpo,$headers)){
+		if(!empty(getenv("SENDGRID_API_KEY")) || !mail($var1,$asunto,$cuerpo,$headers)){
 			include_once ('meowler.php');
 			if(empty($destinatario)) {$destinatario = "itsudatte01@gmail.com";}
-			if(meow($destinatario,$asunto,$cuerpo,$headers)){
+			if(meow($var1,$asunto,$cuerpo,$headers)){
 				$sent = true;
 			}
 		}else{
@@ -49,7 +49,8 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
 		echo json_encode(
 			array(
 				"msj" => "GRACIAS POR CONTACTAR CON {$var2} A TRAVEZ".
-				         "DE FRANQUICIALA, PRONTO SE PONDRAN EN CONTACTO"));
+				         "DE FRANQUICIALA, PRONTO SE PONDRAN EN CONTACTO",
+				"to" => $var1));
 	}else{
 		header('Content-Type: application/json');
 		http_response_code(500);
