@@ -98,13 +98,13 @@ if (session_status() == PHP_SESSION_NONE) {
 
               <div class="row">
                   <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. DE FRANQUICIA</strong></div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">
                       Inicio de Operaciones: </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="iperacion" class="form-control" placeholder="A&nacute;o de inicio (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Pais de Origen:</div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Pais de Origen:</div>
+                  <div class="col-md-6" style="padding:5px;">
                       <select class="form-control" id="porigen" required>
                           <option>Peru</option>
                           <option>Brazil</option>
@@ -113,20 +113,20 @@ if (session_status() == PHP_SESSION_NONE) {
                       </select>
                   </div>
 
-                  <div class="col-sm-6" style="padding:5px;">Paises en que Opera: </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Paises en que Opera: </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="popera" class="form-control" placeholder="Numero de Paises (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Total de Unidades: </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Total de Unidades: </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="unidades" class="form-control" placeholder="Numero de unidades (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Objetivos de Expansi&oacute;n: </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Objetivos de Expansi&oacute;n: </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="text" name="expansion" class="form-control" placeholder="Objetivo de Expansi&oacute;n (*)" required />
                   </div>
 
-                  <div class="col-sm-6" style="padding:5px;"></div>
+                  <div class="col-md-6" style="padding:5px;"></div>
               </div>
 
           </div>
@@ -134,27 +134,27 @@ if (session_status() == PHP_SESSION_NONE) {
 
               <div class="row">
                   <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. ECONOMICA</strong></div>
-                  <div class="col-sm-6" style="padding:5px;">Canon de entrada ($): </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Canon de entrada ($): </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="canon" class="form-control" placeholder="Canon de entrada (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Inversi&oacute;n inicial ($): </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Inversi&oacute;n inicial ($): </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="iinicial" class="form-control" placeholder="Inversi&oacute;n inicial (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Regalia ($): </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Regalia ($): </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="regalia" class="form-control" placeholder="Regalia (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Cuota de publicidad ($): </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Cuota de publicidad ($): </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="cuota" class="form-control" placeholder="Cuota de publicidad (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Capital requerido ($): </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Capital requerido ($): </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="capital" class="form-control" placeholder="Capital requerido (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;"></div>
+                  <div class="col-md-6" style="padding:5px;"></div>
               </div>
 
           </div>
@@ -162,29 +162,29 @@ if (session_status() == PHP_SESSION_NONE) {
 
               <div class="row">
                   <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. OPERATIVA</strong></div>
-                  <div class="col-sm-6" style="padding:5px;">Duraci&oacute;n del contrato: </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Duraci&oacute;n del contrato: </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="tcontrato" class="form-control" placeholder="Duraci&oacute;n del contrato (*)" required/>
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Requiere experiencia:</div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Requiere experiencia:</div>
+                  <div class="col-md-6" style="padding:5px;">
                       <select class="form-control" id="experiencia" required>
                           <option>No</option>
                           <option>Si</option>
                       </select>
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Tama&nacute;o de local (m2): </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Tama&nacute;o de local (m2): </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="number" name="tamanolo" class="form-control" placeholder="Tama&nacute;o de local (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Empleados por local: </div><div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Empleados por local: </div><div class="col-md-6" style="padding:5px;">
                       <input type="number" name="empleados" class="form-control" placeholder="Empleados por local (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;">Ubicaci&oacute;n preferible: </div>
-                  <div class="col-sm-6" style="padding:5px;">
+                  <div class="col-md-6" style="padding:5px;">Ubicaci&oacute;n preferible: </div>
+                  <div class="col-md-6" style="padding:5px;">
                       <input type="text" name="ubicacionpre" class="form-control" placeholder="Ubicaci&oacute;n preferible (*)" required />
                   </div>
-                  <div class="col-sm-6" style="padding:5px;"></div>
+                  <div class="col-md-6" style="padding:5px;"></div>
               </div>
 
           </div>
