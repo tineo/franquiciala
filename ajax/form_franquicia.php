@@ -18,7 +18,7 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
    (isset($_POST["nfran"])     || array_key_exists("nfran", $_POST)) &&
    (isset($_POST["det"]) || array_key_exists("det", $_POST))) {
 
-	global $destinatario;
+
 	// usar tu plantilla :v
 	include_once ('../sendmail.php');
 	$sent = false; //estado del envio
@@ -29,8 +29,8 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
 	try{
 		if(!empty(getenv("SENDGRID_API_KEY")) || !mail($var1,$asunto,$cuerpo,$headers)){
 			include_once ('meowler.php');
-			if(empty($destinatario)) {$destinatario = "itsudatte01@gmail.com";}
-			if(meow($var1,$asunto,$cuerpo,$headers)){
+			if(empty($destinatario)) {$destinatario = "yvelasquezq@gmail.com";}
+			if(meow($destinatario,$asunto,$cuerpo,$headers)){
 				$sent = true;
 			}
 		}else{
@@ -50,14 +50,14 @@ if((isset($_POST["nom"])   || array_key_exists("nom", $_POST)) &&
 			array(
 				"msj" => "GRACIAS POR CONTACTAR CON {$var2} A TRAVEZ".
 				         "DE FRANQUICIALA, PRONTO SE PONDRAN EN CONTACTO",
-				"to" => $var1));
+				"to" => $destinatario));
 	}else{
 		header('Content-Type: application/json');
 		http_response_code(500);
 		echo json_encode(
 			array(
 				"msj" => "ALGO SALIO MAIL CON SU EMAIL. VERIFIQUE SU CUENTA",
-				"to" => $var1));
+				"to" => $destinatario));
 	}
 
 
