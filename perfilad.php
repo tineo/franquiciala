@@ -203,32 +203,36 @@ if (session_status() == PHP_SESSION_NONE) {
               </div>
               <div class="row">
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://575717b777ff8d928c6b-704c46a8034042e4fc898baf7b3e75d9.ssl.cf1.rackcdn.com/17149838_it-director-tapped-for-robotech_tf2185cbe.jpg" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
-                  </div>
+
 
 
               </div>
@@ -244,32 +248,36 @@ if (session_status() == PHP_SESSION_NONE) {
               </div>
               <div class="row">
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://575717b777ff8d928c6b-704c46a8034042e4fc898baf7b3e75d9.ssl.cf1.rackcdn.com/17149838_it-director-tapped-for-robotech_tf2185cbe.jpg" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
+
                   <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
+                      <img src="img/dump.jpg" class="img-thumbnail" />
                   </div>
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="https://goo.gl/ZMC5u1" class="img-thumbnail" />
-                  </div>
+
 
 
               </div>
