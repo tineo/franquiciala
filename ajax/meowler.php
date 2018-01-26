@@ -9,22 +9,20 @@
 require_once '../vendor/autoload.php';
 
 function meow($destinatario,$asunto,$cuerpo,$headers) {
-  // Create the Transport
-  $transport = (new Swift_SmtpTransport(getenv("MAILGUN_SMTP_SERVER"), getenv("MAILGUN_SMTP_PORT"), 'ssl'))
-    ->setUsername(getenv("MAILGUN_SMTP_LOGIN"))
-    ->setPassword(getenv("MAILGUN_SMTP_PASSWORD"));
 
-  // Create the Mailer using your created Transport
-  $mailer = new Swift_Mailer($transport);
+	$from = new SendGrid\Email('Cesar Gutierrez Tineo ;D', "cesar@franquiciala.heroku.com");
+	$to = new SendGrid\Email(null, $destinatario);
+	$content = new SendGrid\Content("text/html", $cuerpo);
+	$mail = new SendGrid\Mail($from, $asunto, $to, $content);
 
-  // Create a message
-  $message = (new Swift_Message($asunto))
-    ->setFrom(['cesar@tineo.mobi' => 'Cesar Gutierrez Tineo ;D'])
-    ->setTo([$destinatario])
-    ->setBody($cuerpo, 'text/html');
+	$apiKey = getenv('SENDGRID_API_KEY');
+	$sg = new \SendGrid($apiKey);
 
-  // Send the message
-  return $mailer->send($message);
+	$response = $sg->client->mail()->send()->post($mail);
+	return ($response->statusCode()<300)?TRUE:FALSE;
+	//echo $response->headers();
+	//echo $response->body();
+
 }
 //no pe, no es ajax
 if(isset($_SERVER['REQUEST_METHOD'])) http_response_code(404);
