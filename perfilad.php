@@ -7,6 +7,13 @@ if (session_status() == PHP_SESSION_NONE) {
 
 	if(!isset($_SESSION["uid"])){
 		header("Location: index.php"); exit;
+    }else{
+
+	    $queryf = " SELECT * FROM franquicias WHERE idfranquicia = ".$_SESSION['fid'];
+		$qf = mysql_query($queryf, $conexion) or die("Problemas en el select:".mysql_error());
+		if ($franqui = mysql_fetch_array($qf))
+		{ }
+
     }
 }
 ?>
@@ -83,7 +90,7 @@ if (session_status() == PHP_SESSION_NONE) {
   <div style="padding-bottom:30px;">
     <!--<img src="img/foto_afilia.jpg" class="img-responsive" style="float:left; padding:0 15px 15px 0;">-->
     <span class="descFran">
-      <p><strong>#NOMBRE DE EMPRESA#</strong>,<br/>Bienvenido<br/><br/>Gracias por estar aqui, es hora de empezar.<br/>FRANQUICIALA pone a tu disposicion esta plataforma por la cual podras actualizar la informacion continuamente y asi no depender de un tercero.</p></span></div>
+      <p><strong><?=$franqui["nombre"] ?></strong>,<br/>Bienvenido<br/><br/>Gracias por estar aqui, es hora de empezar.<br/>FRANQUICIALA pone a tu disposicion esta plataforma por la cual podras actualizar la informacion continuamente y asi no depender de un tercero.</p></span></div>
 <form id="form1" name="form1">
   <div class="descFran">
     <div>
@@ -94,10 +101,10 @@ if (session_status() == PHP_SESSION_NONE) {
           <div class="col-sm-8">
 
               <div class="row">
-                  <div class="col-md-8 col-sm-12" style="padding:5px;">Descripcion:<br><textarea class="form-control" id="descripcion" placeholder="Descripcion (*)" rows="4" required></textarea></div>
-                  <div class="col-md-4 col-sm-6" style="padding:5px;">Correo electronico:<br/><input type="email" name="correo" class="form-control" placeholder="Correo electronico @ (*)" required></div>
+                  <div class="col-md-8 col-sm-12" style="padding:5px;">Descripcion:<br><textarea class="form-control" id="descripcion" placeholder="Descripcion (*)" rows="4" required><?=$franqui["descripcion"]; ?></textarea></div>
+                  <div class="col-md-4 col-sm-6" style="padding:5px;">Correo electronico:<br/><input type="email" name="correo" class="form-control" placeholder="Correo electronico @ (*)" value="<?=$franqui["correo"]; ?>" required  /></div>
                   <div class="col-md-4 col-sm-6" style="padding:5px;">Pagina web:<br/><input type="site" name="paweb" class="form-control" placeholder="www Pagina Web (*)" required></div>
-                  <div class="col-md-12 col-sm-6" style="padding:5px;">URL Video Institucional:<br/><input type="text" name="urlvideo" class="form-control" placeholder="URL Video institucional (*)" required></div>
+                  <div class="col-md-12 col-sm-6" style="padding:5px;">URL Video Institucional:<br/><input type="text" name="urlvideo" class="form-control" placeholder="URL Video institucional (*)" value="<?=$franqui["video"]; ?>" required></div>
                   <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
               </div>
 
@@ -120,29 +127,30 @@ if (session_status() == PHP_SESSION_NONE) {
                   <div class="col-md-6" style="padding:5px;">
                       Inicio de Operaciones: </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="iperacion" class="form-control" placeholder="A&nacute;o de inicio (*)" required />
+                      <input type="number" name="iperacion" class="form-control" placeholder="A&nacute;o de inicio (*)" value="<?=$franqui["anoinicio"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Pais de Origen:</div>
                   <div class="col-md-6" style="padding:5px;">
-                      <select class="form-control" id="porigen" required>
+                      <select class="form-control" id="porigen" disabled>
                           <option>Peru</option>
                           <option>Brazil</option>
                           <option>Chile</option>
                           <option>Colombia</option>
                       </select>
+
                   </div>
 
                   <div class="col-md-6" style="padding:5px;">Paises en que Opera: </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="popera" class="form-control" placeholder="Numero de Paises (*)" required />
+                      <input type="number" name="popera" class="form-control" placeholder="Numero de Paises (*)" value="<?=$franqui["paises"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Total de Unidades: </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="unidades" class="form-control" placeholder="Numero de unidades (*)" required />
+                      <input type="number" name="unidades" class="form-control" placeholder="Numero de unidades (*)" value="<?=$franqui["unidades"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Objetivos de Expansi&oacute;n: </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="text" name="expansion" class="form-control" placeholder="Objetivo de Expansi&oacute;n (*)" required />
+                      <input type="text" name="expansion" class="form-control" placeholder="Objetivo de Expansi&oacute;n (*)" value="<?=$franqui["expansion"]; ?>" disabled />
                   </div>
 
                   <div class="col-md-6" style="padding:5px;"></div>
@@ -155,23 +163,23 @@ if (session_status() == PHP_SESSION_NONE) {
                   <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. ECONOMICA</strong></div>
                   <div class="col-md-6" style="padding:5px;">Canon de entrada ($): </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="canon" class="form-control" placeholder="Canon de entrada (*)" required />
+                      <input type="number" name="canon" class="form-control" placeholder="Canon de entrada (*)" value="<?=$franqui["canon"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Inversi&oacute;n inicial ($): </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="iinicial" class="form-control" placeholder="Inversi&oacute;n inicial (*)" required />
+                      <input type="number" name="iinicial" class="form-control" placeholder="Inversi&oacute;n inicial (*)" value="<?=$franqui["inversionini"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Regalia ($): </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="regalia" class="form-control" placeholder="Regalia (*)" required />
+                      <input type="number" name="regalia" class="form-control" placeholder="Regalia (*)" value="<?=$franqui["regalia"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Cuota de publicidad ($): </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="cuota" class="form-control" placeholder="Cuota de publicidad (*)" required />
+                      <input type="number" name="cuota" class="form-control" placeholder="Cuota de publicidad (*)" value="<?=$franqui["cuotapublic"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Capital requerido ($): </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="capital" class="form-control" placeholder="Capital requerido (*)" required />
+                      <input type="number" name="capital" class="form-control" placeholder="Capital requerido (*)" value="<?=$franqui["capitalreq"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;"></div>
               </div>
@@ -183,25 +191,25 @@ if (session_status() == PHP_SESSION_NONE) {
                   <div style="padding:18px 0; color:#fc9a00;"><strong>INFO. OPERATIVA</strong></div>
                   <div class="col-md-6" style="padding:5px;">Duraci&oacute;n del contrato: </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="tcontrato" class="form-control" placeholder="Duraci&oacute;n del contrato (*)" required/>
+                      <input type="number" name="tcontrato" class="form-control" placeholder="Duraci&oacute;n del contrato (*)" value="<?=intval($franqui["duracion"]); ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Requiere experiencia:</div>
                   <div class="col-md-6" style="padding:5px;">
-                      <select class="form-control" id="experiencia" required>
-                          <option>No</option>
-                          <option>Si</option>
+                      <select class="form-control" id="experiencia" disabled>
+                          <option value="No" <?=($franqui["experiencia"]=="No"?"selected":"") ?>>No</option>
+                          <option value="Si" <?=($franqui["experiencia"]=="Si"?"selected":"") ?>>Si</option>
                       </select>
                   </div>
                   <div class="col-md-6" style="padding:5px;">Tama&nacute;o de local (m2): </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="tamanolo" class="form-control" placeholder="Tama&nacute;o de local (*)" required />
+                      <input type="number" name="tamanolo" class="form-control" placeholder="Tama&nacute;o de local (*)" value="<?=intval($franqui["localtam"]); ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Empleados por local: </div><div class="col-md-6" style="padding:5px;">
-                      <input type="number" name="empleados" class="form-control" placeholder="Empleados por local (*)" required />
+                      <input type="number" name="empleados" class="form-control" placeholder="Empleados por local (*)" value="<?=$franqui["personalreq"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;">Ubicaci&oacute;n preferible: </div>
                   <div class="col-md-6" style="padding:5px;">
-                      <input type="text" name="ubicacionpre" class="form-control" placeholder="Ubicaci&oacute;n preferible (*)" required />
+                      <input type="text" name="ubicacionpre" class="form-control" placeholder="Ubicaci&oacute;n preferible (*)" value="<?=$franqui["ubicacion"]; ?>" disabled />
                   </div>
                   <div class="col-md-6" style="padding:5px;"></div>
               </div>

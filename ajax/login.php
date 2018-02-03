@@ -14,13 +14,14 @@ if(isset($_POST["uname"])&&isset($_POST["pswd"])){
   $query = sprintf("SELECT * FROM usuario WHERE username='%s' ",
     mysql_real_escape_string($_POST["uname"]));
 
-  $query = mysql_query($query, $conexion) or die("Problemas en el select:".mysql_error());
-  if ($rs = mysql_fetch_array($query))
+  $q = mysql_query($query, $conexion) or die("Problemas en el select:".mysql_error());
+  if ($rs = mysql_fetch_array($q))
   {
     if(password_verify ( $_POST["pswd"] , $rs["password"])){
       session_start();
       //json_encode($rs);
       $_SESSION['uid']  = $rs["id"];
+      $_SESSION['fid']  = $rs["idfranqui"];
       http_response_code(200);
     }else{
     	http_response_code(403);
