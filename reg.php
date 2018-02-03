@@ -14,12 +14,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		include "rutadb.php";
 
-		$query = "INSERT INTO `usuario` ( `username`, `password`, `email`) 
- 					VALUES ('%s','%s','%s')";
+		$query = "INSERT INTO `usuario` ( `username`, `password`, `email`, `idfranqui`) 
+ 					VALUES ('%s','%s','%s','%s')";
 		$query = sprintf($query,
 			mysql_real_escape_string($_POST["username"]),
 			password_hash(mysql_real_escape_string($_POST["password"]),PASSWORD_DEFAULT),
-			mysql_real_escape_string($_POST["email"])
+			mysql_real_escape_string($_POST["email"]),
+			mysql_real_escape_string($_POST["fid"])
 		);
 
 		if(mysql_query($query, $conexion)){
@@ -48,6 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	<input name="username" placeholder="username" required />
 	<input name="password" type="password" placeholder="password" required />
 	<input name="email" type="email" placeholder="email" required />
+	<input name="fid" type="number" placeholder="franquicia id" required />
 	<input type="submit" value="Registrar" />
 </form>
 </body>
