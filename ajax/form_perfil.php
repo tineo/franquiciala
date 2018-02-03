@@ -33,7 +33,7 @@
 if(
 	(isset($_POST["descripcion"])   || array_key_exists("descripcion", $_POST)) &&
 	(isset($_POST["correo"])  || array_key_exists("correo", $_POST)) &&
-	(isset($_POST["video"])     || array_key_exists("video", $_POST)) &&
+	(isset($_POST["video"])     || array_key_exists("video", $_POST)) /*&&
 
 	(isset($_POST["anoinicio"])     || array_key_exists("anoinicio", $_POST)) &&
 	(isset($_POST["nompais"])     || array_key_exists("nompais", $_POST)) &&
@@ -51,16 +51,30 @@ if(
 	(isset($_POST["experiencia"])  || array_key_exists("experiencia", $_POST)) &&
 	(isset($_POST["localtam"])   || array_key_exists("localtam", $_POST)) &&
 	(isset($_POST["personalreq"])     || array_key_exists("personalreq", $_POST)) &&
-	(isset($_POST["ubicacion"]) || array_key_exists("ubicacion", $_POST))) {
+	(isset($_POST["ubicacion"]) || array_key_exists("ubicacion", $_POST))*/) {
 
 
+	include "../rutadb.php";
 	header('Content-Type: application/json');
-	http_response_code(500);
-	echo json_encode(
-		array(
-			"msj" => "ALGO SALIO MAIL CON SU EMAIL. VERIFIQUE SU CUENTA"));
 
+	$query = "UPDATE `franquicias` SET descripcion = '%s', correo = '%s', video = '%s'  ";
+	$query = sprintf($query,
+		mysql_real_escape_string($_POST["descripcion"]),
+		mysql_real_escape_string($_POST["correo"]),
+		mysql_real_escape_string($_POST["video"])
+	);
 
+	if(mysql_query($query, $conexion)){
+		http_response_code(200);
+		echo json_encode(
+			array(
+				"msj" => "SE ACTUALIZO LOS DATOS"));
+	}else{
+		http_response_code(500);
+		echo json_encode(
+			array(
+				"msj" => "Se produjo un error en su inscripcion"));
+	}
 
 }else{
 	http_response_code(404);

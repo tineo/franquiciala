@@ -261,7 +261,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
     <div align="center" style="padding:20px;">
-    	<input type="submit" name="envia" id="envia" class="btn btn-warning" value="Actualizar Informacion">
+        <button name="envia" id="envia" class="btn btn-warning" >Actualizar Informacion</button>
     	<input type="reset" name="limpia" id="limpia" class="btn btn-default" value="Cancelar">
     </div>
 
@@ -350,23 +350,23 @@ $(function(){
     var correo = $("input[name='correo']");
     var video = $("input[name='urlvideo']");
 
-    var anoinicio = $("input[name='iperacion']");
-    var nompais = $("input[name='porigen']");
-    var paises = $("input[name='popera']");
-    var unidades = $("input[name='unidades']");
-    var expansion = $("input[name='expansion']");
+    //var anoinicio = $("input[name='iperacion']");
+    //var nompais = $("input[name='porigen']");
+    //var paises = $("input[name='popera']");
+    //var unidades = $("input[name='unidades']");
+    //var expansion = $("input[name='expansion']");
 
-    var canon = $("input[name='canon']");
-    var inversionini = $("input[name='iinicial']");
-    var regalia = $("input[name='regalia']");
-    var cuotapublic = $("input[name='cuota']");
-    var capitalreq = $("input[name='capital']");
+    //var canon = $("input[name='canon']");
+    //var inversionini = $("input[name='iinicial']");
+    //var regalia = $("input[name='regalia']");
+    //var cuotapublic = $("input[name='cuota']");
+    //var capitalreq = $("input[name='capital']");
 
-    var duracion = $("input[name='tcontrato']");
-    var experiencia = $("input[name='experiencia']");
-    var localtam = $("input[name='tamanolo']");
-    var personalreq = $("input[name='empleados']");
-    var ubicacion = $("input[name='ubicacionpre']");
+    //var duracion = $("input[name='tcontrato']");
+    //var experiencia = $("input[name='experiencia']");
+    //var localtam = $("input[name='tamanolo']");
+    //var personalreq = $("input[name='empleados']");
+    //var ubicacion = $("input[name='ubicacionpre']");
 
 
     $("#envia").on('click',function(event) {
@@ -381,28 +381,30 @@ $(function(){
             correo: correo.val(),
             video: video.val(),
 
-            anoinicio: anoinicio.val(),
-            nompais: nompais.val(),
-            paises: paises.val(),
-            unidades: unidades.val(),
-            expansion: expansion.val(),
+            fid: <?=$_SESSION["fid"]?>
 
-            canon: canon.val(),
-            inversionini: inversionini.val(),
-            regalia: regalia.val(),
-            cuotapublic: cuotapublic.val(),
-            capitalreq: capitalreq.val(),
+            //anoinicio: anoinicio.val(),
+            //nompais: nompais.val(),
+            //paises: paises.val(),
+            //unidades: unidades.val(),
+            //expansion: expansion.val(),
 
-            duracion: duracion.val(),
-            experiencia: experiencia.val(),
-            localtam: localtam.val(),
-            personalreq: personalreq.val(),
-            ubicacion: ubicacion.val()
+            //canon: canon.val(),
+            //inversionini: inversionini.val(),
+            //regalia: regalia.val(),
+            //cuotapublic: cuotapublic.val(),
+            //capitalreq: capitalreq.val(),
+
+            //duracion: duracion.val(),
+            //experiencia: experiencia.val(),
+            //localtam: localtam.val(),
+            //personalreq: personalreq.val(),
+            //ubicacion: ubicacion.val()
 
           }
         }).done(function( data ) {
           $("#myModalBody").text(data.msj);
-          $('#myModal').modal('show');
+          $('#myModal1').modal('show');
         });
       }
     });
