@@ -18,7 +18,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Philosopher:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
-
+    <link rel="stylesheet" type="text/css" href="assets/css/cropper.css">
     <!-- Meta -->
 	<?php include("metacod.php"); ?>
 
@@ -38,7 +38,26 @@ if (session_status() == PHP_SESSION_NONE) {
     </script>
 
     
+<style type="text/css">
+    .icon-remove{
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        margin: 3px;
 
+        -webkit-filter: drop-shadow(1px 1px 0 black)
+        drop-shadow(-1px -1px 0 black);
+        filter: drop-shadow(1px 1px 0 black)
+        drop-shadow(-1px -1px 0 black);
+
+    }
+    .icon-remove:hover{
+        cursor: pointer;
+    }
+    .dz-remove{
+        display: none;
+    }
+</style>
 </head> 
 
 <body>
@@ -65,7 +84,7 @@ if (session_status() == PHP_SESSION_NONE) {
     <!--<img src="img/foto_afilia.jpg" class="img-responsive" style="float:left; padding:0 15px 15px 0;">-->
     <span class="descFran">
       <p><strong>#NOMBRE DE EMPRESA#</strong>,<br/>Bienvenido<br/><br/>Gracias por estar aqui, es hora de empezar.<br/>FRANQUICIALA pone a tu disposicion esta plataforma por la cual podras actualizar la informacion continuamente y asi no depender de un tercero.</p></span></div>
-<form id="form1" name="form1" method="post" action="#">
+<form id="form1" name="form1">
   <div class="descFran">
     <div>
     </div>
@@ -75,7 +94,7 @@ if (session_status() == PHP_SESSION_NONE) {
           <div class="col-sm-8">
 
               <div class="row">
-                  <div class="col-md-8 col-sm-12" style="padding:5px;">Descripcion:<br><textarea class="form-control" placeholder="Descripcion (*)" rows="4" required></textarea></div>
+                  <div class="col-md-8 col-sm-12" style="padding:5px;">Descripcion:<br><textarea class="form-control" id="descripcion" placeholder="Descripcion (*)" rows="4" required></textarea></div>
                   <div class="col-md-4 col-sm-6" style="padding:5px;">Correo electronico:<br/><input type="email" name="correo" class="form-control" placeholder="Correo electronico @ (*)" required></div>
                   <div class="col-md-4 col-sm-6" style="padding:5px;">Pagina web:<br/><input type="site" name="paweb" class="form-control" placeholder="www Pagina Web (*)" required></div>
                   <div class="col-md-12 col-sm-6" style="padding:5px;">URL Video Institucional:<br/><input type="text" name="urlvideo" class="form-control" placeholder="URL Video institucional (*)" required></div>
@@ -196,93 +215,42 @@ if (session_status() == PHP_SESSION_NONE) {
               <div style="padding:18px 0; color:#fc9a00;"><strong>GALERIA DE FOTOS</strong></div>
               <div class="row">
                   <div class="col-sm-12" style="padding:5px;">
-                      <input id="input-2" name="input2[]"
-                             type="file" class="file" multiple
-                             data-show-upload="false" data-show-caption="true">
+                      <button id="btn-galeria" class="btn btn-warning">Subir imagen</button>
                   </div>
               </div>
-              <div class="row">
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
+              <div id="zona" class="row"></div>
 
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
+
+              <div class="dz-preview dz-file-preview" id="template-preview" style="display: none">
+                  <div class="dz-details col-xs-3" style="padding:5px;">
+                      <img src="https://cdn2.iconfinder.com/data/icons/files-folders-1/130/Trash-512.png" alt="Click me to remove the file." class="icon-remove" data-dz-remove />
+                      <img class="img-thumbnail" data-dz-thumbnail />
                   </div>
 
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-
-
+                  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                  <div class="dz-success-mark"><span>✔</span></div>
+                  <div class="dz-error-mark"><span>✘</span></div>
+                  <div class="dz-error-message"><span data-dz-errormessage></span></div>
               </div>
           </div>
+
+
           <div class="col-sm-6">
               <div style="padding:18px 0; color:#fc9a00;"><strong>BANNERS</strong></div>
               <div class="row">
                   <div class="col-sm-12" style="padding:5px;">
-                      <input id="input-2" name="input2[]"
-                             type="file" class="file" multiple
-                             data-show-upload="false" data-show-caption="true">
+                      <div class="col-sm-12" style="padding:5px;">
+                          <button id="btn-banner" class="btn btn-warning">Subir imagen</button>
+                      </div>
                   </div>
               </div>
-              <div class="row">
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
 
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
+              <div id="zona2" class="row"></div>
 
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-                  <div class="col-sm-3" style="padding:5px;">
-                      <img src="img/dump.jpg" class="img-thumbnail" />
-                  </div>
-
-
-
-              </div>
           </div>
       </div>
+
+
 
     <div align="center" style="padding:20px;">
     	<input type="submit" name="envia" id="envia" class="btn btn-warning" value="Actualizar Informacion">
@@ -318,5 +286,124 @@ $(function(){
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/scripts.js"></script>
+
+        <script src="assets/js/dropzone.js"></script>
+        <script src="assets/js/dropzone-cropper.js"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="myModalBody">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">OK</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  // AJAX
+  $(function(){
+    //descripcion
+    //correo
+    //web*
+    //video
+
+    //anoinicio
+    //nompais
+    //paises
+    //unidades
+    //expansion
+
+    //canon
+    //inversionini
+    //regalia
+    //cuotapublic
+    //capitalreq
+
+    //duracion
+    //experiencia
+    //localtam
+    //personalreq
+    //ubicacion
+
+    var $myForm = $('#form1');
+
+    var descripcion = $("#descripcion");
+
+    var correo = $("input[name='correo']");
+    var video = $("input[name='urlvideo']");
+
+    var anoinicio = $("input[name='iperacion']");
+    var nompais = $("input[name='porigen']");
+    var paises = $("input[name='popera']");
+    var unidades = $("input[name='unidades']");
+    var expansion = $("input[name='expansion']");
+
+    var canon = $("input[name='canon']");
+    var inversionini = $("input[name='iinicial']");
+    var regalia = $("input[name='regalia']");
+    var cuotapublic = $("input[name='cuota']");
+    var capitalreq = $("input[name='capital']");
+
+    var duracion = $("input[name='tcontrato']");
+    var experiencia = $("input[name='experiencia']");
+    var localtam = $("input[name='tamanolo']");
+    var personalreq = $("input[name='empleados']");
+    var ubicacion = $("input[name='ubicacionpre']");
+
+
+    $("#envia").on('click',function(event) {
+      if ($myForm[0].checkValidity()) {
+        event.preventDefault();
+        $.ajax({
+          method: "POST",
+          url: "ajax/form_perfil.php",
+          data: {
+
+            descripcion: descripcion.val(),
+            correo: correo.val(),
+            video: video.val(),
+
+            anoinicio: anoinicio.val(),
+            nompais: nompais.val(),
+            paises: paises.val(),
+            unidades: unidades.val(),
+            expansion: expansion.val(),
+
+            canon: canon.val(),
+            inversionini: inversionini.val(),
+            regalia: regalia.val(),
+            cuotapublic: cuotapublic.val(),
+            capitalreq: capitalreq.val(),
+
+            duracion: duracion.val(),
+            experiencia: experiencia.val(),
+            localtam: localtam.val(),
+            personalreq: personalreq.val(),
+            ubicacion: ubicacion.val()
+
+          }
+        }).done(function( data ) {
+          $("#myModalBody").text(data.msj);
+          $('#myModal').modal('show');
+        });
+      }
+    });
+
+  });
+</script>
+
+<script type="text/javascript" src="assets/js/galeria.js"></script>
+<script type="text/javascript" src="assets/js/banner.js"></script>
+
 
 </html> 
