@@ -103,7 +103,7 @@ if (session_status() == PHP_SESSION_NONE) {
               <div class="row">
                   <div class="col-md-8 col-sm-12" style="padding:5px;">Descripcion:<br><textarea class="form-control" id="descripcion" placeholder="Descripcion (*)" rows="4" required><?=$franqui["descripcion"]; ?></textarea></div>
                   <div class="col-md-4 col-sm-6" style="padding:5px;">Correo electronico:<br/><input type="email" name="correo" class="form-control" placeholder="Correo electronico @ (*)" value="<?=$franqui["correo"]; ?>" required  /></div>
-                  <div class="col-md-4 col-sm-6" style="padding:5px;">Pagina web:<br/><input type="site" name="paweb" class="form-control" placeholder="www Pagina Web (*)" required></div>
+                  <div class="col-md-4 col-sm-6" style="padding:5px;">Pagina web:<br/><input type="site" name="paweb" class="form-control" placeholder="www Pagina Web (*)" value="<?=$franqui["pagweb"]; ?>" required></div>
                   <div class="col-md-12 col-sm-6" style="padding:5px;">URL Video Institucional:<br/><input type="text" name="urlvideo" class="form-control" placeholder="URL Video institucional (*)" value="<?=$franqui["video"]; ?>" required></div>
                   <div class="col-md-4 col-sm-6" style="padding:5px;"></div>
               </div>
@@ -369,6 +369,7 @@ $(function(){
 
     var correo = $("input[name='correo']");
     var video = $("input[name='urlvideo']");
+    var pagweb = $("input[name='paweb']");
 
     //var anoinicio = $("input[name='iperacion']");
     //var nompais = $("input[name='porigen']");
@@ -400,6 +401,7 @@ $(function(){
             descripcion: descripcion.val(),
             correo: correo.val(),
             video: video.val(),
+            pagweb: pagweb.val(),
 
             fid: <?=$_SESSION["fid"]?>
 
