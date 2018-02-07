@@ -437,6 +437,14 @@ $(function(){
 <script type="text/javascript" src="assets/js/galeria.js"></script>
 <script type="text/javascript" src="assets/js/banner.js"></script>
 <script type="text/javascript" src="assets/js/logo.js"></script>
-
+<script>
+    var $myForm = $('#form1');
+    $("#btn-banner").on('click',function(event) {
+        if ($myForm[0].checkValidity()) {
+            event.preventDefault();}});
+    $("#btn-galeria").on('click',function(event) {
+        if ($myForm[0].checkValidity()) {
+            event.preventDefault();}});
+</script>
 
 </html> 
