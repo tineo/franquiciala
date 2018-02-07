@@ -338,7 +338,16 @@
       <!-- 16:9 aspect ratio -->
       <div class="embed-responsive embed-responsive-16by9">
         <div style="padding:15px;">
-          <iframe class="embed-responsive-item" src="//<? echo $perfil['video']; ?>?rel=0" allowfullscreen="" style="height:280px;"></iframe>
+            <?php
+
+
+            $url = preg_replace(
+                "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
+                "www.youtube.com/embed/$2",
+                $perfil["video"]);
+            ?>
+          <iframe class="embed-responsive-item" src="//<?=$url ?>?rel=0" allowfullscreen="" style="height:280px;"></iframe>
+
         </div>
         
       </div>
