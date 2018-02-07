@@ -414,6 +414,7 @@ $(function(){
 
 <script type="text/javascript" src="assets/js/galeria.js"></script>
 <script type="text/javascript" src="assets/js/banner.js"></script>
+<script type="text/javascript" src="assets/js/logo.js"></script>
 
 
 </html> 

@@ -8,14 +8,14 @@
 
 $ds          = DIRECTORY_SEPARATOR;  //1
 
-$storeFolder = '../img/banners';   //2
+$storeFolder = '../img/logos-clientes';   //2
 
 $method = $_SERVER['REQUEST_METHOD'];
 session_start();
 if ('GET' === $method) {
 
 	include "../rutadb.php";
-	$query = "SELECT * FROM `banner` WHERE `id` = '%s' ";
+	$query = "SELECT logo FROM `franquicias` WHERE `idfranquicia` = '%s' ";
 	$query = sprintf( $query,
 		//mysql_real_escape_string($_GET["idfranquicia"]),
 		mysql_real_escape_string( $_SESSION['fid'] )
@@ -43,10 +43,10 @@ if ('GET' === $method) {
 
 }else if ('DELETE' === $method) {
 	parse_str(file_get_contents('php://input'), $_DELETE);
-	var_dump($_DELETE);
+	//var_dump($_DELETE);
 	include "../rutadb.php";
 
-	$query = "DELETE FROM `banner` WHERE imagen LIKE '%s' ";
+	$query = "UPDATE `franquicias` SET foto = '' WHERE foto LIKE '%s' ";
 	$query = sprintf($query,
 		//mysql_real_escape_string($_POST["idfranquicia"]),
 		mysql_real_escape_string($_DELETE["uuid"])."%" //tipo
@@ -88,7 +88,7 @@ if ('GET' === $method) {
 			$image
 				->fromFile($targetFile)
 				->autoOrient()
-				->thumbnail(1920, 500)
+				->thumbnail(230, 100)
 				->toFile($targetFile);
 		} catch(Exception $err) {
 
@@ -98,14 +98,11 @@ if ('GET' === $method) {
 		//var_dump($_POST['uuid']);
 		//exit();
 		include "../rutadb.php";
-		$query = "INSERT INTO `banner` ( `tipo`, `id`, `nombre`, `imagen`,`link`,`estado`,`proveedores`,`franquicias`,`noticias`)  VALUES ('%s', '%s', '%s', '%s','%s',1,0,0,0)";
+		$query = "UPDATE `franquicias` SET foto = '%s' WHERE idfranquicia = '%s'";
 		$query = sprintf($query,
 			//mysql_real_escape_string($_POST["idfranquicia"]),
-			mysql_real_escape_string("f"), //tipo
-			mysql_real_escape_string($_SESSION['fid']), //id fq
-			mysql_real_escape_string(""), // nombre
-			mysql_real_escape_string($newfilename), //imagen
-			mysql_real_escape_string("") //link
+			mysql_real_escape_string($newfilename),//imagen
+			mysql_real_escape_string($_SESSION['fid'])//imagen
 
 		);
 

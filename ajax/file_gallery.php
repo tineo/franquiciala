@@ -10,14 +10,14 @@ $ds          = DIRECTORY_SEPARATOR;  //1
 
 $storeFolder = '../img/galeria';   //2
 $method = $_SERVER['REQUEST_METHOD'];
-
+session_start();
 if ('GET' === $method) {
 
 	include "../rutadb.php";
 	$query = "SELECT * FROM `fotosgal` WHERE `idfranquicia` = '%s' ";
 	$query = sprintf( $query,
 		//mysql_real_escape_string($_GET["idfranquicia"]),
-		mysql_real_escape_string( "2" )
+		mysql_real_escape_string( $_SESSION['fid'] )
 	);
 	$resultado = mysql_query($query,$conexion);
 
@@ -42,7 +42,7 @@ if ('GET' === $method) {
 
 }else if ('DELETE' === $method) {
 	parse_str(file_get_contents('php://input'), $_DELETE);
-	var_dump($_DELETE);
+	//var_dump($_DELETE);
 	include "../rutadb.php";
 
 	$query = "DELETE FROM `fotosgal` WHERE enlace LIKE '%s' ";
@@ -100,7 +100,7 @@ if ('GET' === $method) {
 		$query = "INSERT INTO `fotosgal` ( `idfranquicia`, `tipo`, `nombre`, `enlace`,`estado`)  VALUES ('%s', 'g', '%s', '%s',1)";
 		$query = sprintf( $query,
 			//mysql_real_escape_string($_POST["idfranquicia"]),
-			mysql_real_escape_string( "2" ),
+			mysql_real_escape_string( $_SESSION['fid'] ),
 			mysql_real_escape_string( "" ),
 			mysql_real_escape_string( $newfilename )
 		);

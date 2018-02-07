@@ -29,7 +29,7 @@
 //personalreq
 //ubicacion
 
-
+session_start();
 if(
 	(isset($_POST["descripcion"])   || array_key_exists("descripcion", $_POST)) &&
 	(isset($_POST["correo"])  || array_key_exists("correo", $_POST)) &&
@@ -53,15 +53,15 @@ if(
 	(isset($_POST["personalreq"])     || array_key_exists("personalreq", $_POST)) &&
 	(isset($_POST["ubicacion"]) || array_key_exists("ubicacion", $_POST))*/) {
 
-
 	include "../rutadb.php";
 	header('Content-Type: application/json');
 
-	$query = "UPDATE `franquicias` SET descripcion = '%s', correo = '%s', video = '%s'  ";
+	$query = "UPDATE `franquicias` SET descripcion = '%s', correo = '%s', video = '%s'  WHERE idfranquicia = '%s'";
 	$query = sprintf($query,
 		mysql_real_escape_string($_POST["descripcion"]),
 		mysql_real_escape_string($_POST["correo"]),
-		mysql_real_escape_string($_POST["video"])
+		mysql_real_escape_string($_POST["video"]),
+		mysql_real_escape_string($_SESSION['fid'])
 	);
 
 	if(mysql_query($query, $conexion)){
