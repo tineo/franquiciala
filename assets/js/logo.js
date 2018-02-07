@@ -1,7 +1,7 @@
 var minImageWidth = 500,
     minImageHeight = 405;
 var currentFile = null;
-var dropzoneOptions2 = {
+var dropzoneOptions3 = {
   clickable: '#btn-logo',
   url: "/ajax/file_logo.php",
   paramName: "file", // The name that will be used to transfer the file
@@ -75,7 +75,7 @@ var dropzoneOptions2 = {
   }
 
 };
-var myDropzone3 = new Dropzone("div#zona3", dropzoneOptions2 );
+var myDropzone3 = new Dropzone("div#zona3", dropzoneOptions3 );
 
 
 // initialize dropzone
