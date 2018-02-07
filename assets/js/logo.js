@@ -1,5 +1,6 @@
 var minImageWidth = 500,
     minImageHeight = 405;
+var currentFile = null;
 var dropzoneOptions2 = {
   clickable: '#btn-logo',
   url: "/ajax/file_logo.php",
@@ -10,11 +11,17 @@ var dropzoneOptions2 = {
   //  file.acceptDimensions = done;
   //  file.rejectDimensions = function() { done("Image too small."); };
   //},
-  previewTemplate: document.getElementById('template-preview').innerHTML,
-  addRemoveLinks: true,
+  previewTemplate: document.getElementById('template-preview2').innerHTML,
+  addRemoveLinks: false,
+  maxFiles: 1,
   init: function() {
     this.on("addedfile", function(file) {
       //alert("Added file.");
+        if (currentFile) {
+            this.removeFile(currentFile);
+        }
+        currentFile = file;
+
     });
     this.on("removedfile", function(file) {
       //alert("Removed file.");
@@ -89,6 +96,7 @@ $.ajax({
       myDropzone3.options.addedfile.call(myDropzone3, mockFile);
       myDropzone3.files.push(mockFile);
       myDropzone3.options.thumbnail.call(myDropzone3, mockFile, "/img/logos-clientes/"+obj.base);
+      currentFile = mockFile;
     }
   }
 });

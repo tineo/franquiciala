@@ -31,9 +31,9 @@ if ('GET' === $method) {
 	$data = array();
 	while ($fila = mysql_fetch_array($resultado))
 	{
-		$path_parts = pathinfo(dirname( __FILE__ ) . $ds. $storeFolder . $ds. $fila["imagen"]);
+		$path_parts = pathinfo(dirname( __FILE__ ) . $ds. $storeFolder . $ds. $fila["logo"]);
 
-		$data[] = array( "base" => $path_parts['basename'], "uuid" => $path_parts['filename']);
+		$data[] = array( "base" => $path_parts['basename'], "uuid" => $path_parts['filename'], "query" => $query);
 
 	}
 	header('Content-Type: application/json');
@@ -46,7 +46,7 @@ if ('GET' === $method) {
 	//var_dump($_DELETE);
 	include "../rutadb.php";
 
-	$query = "UPDATE `franquicias` SET foto = '' WHERE foto LIKE '%s' ";
+	$query = "UPDATE `franquicias` SET logo = '' WHERE foto LIKE '%s' ";
 	$query = sprintf($query,
 		//mysql_real_escape_string($_POST["idfranquicia"]),
 		mysql_real_escape_string($_DELETE["uuid"])."%" //tipo
@@ -98,7 +98,8 @@ if ('GET' === $method) {
 		//var_dump($_POST['uuid']);
 		//exit();
 		include "../rutadb.php";
-		$query = "UPDATE `franquicias` SET foto = '%s' WHERE idfranquicia = '%s'";
+		$query = "UPDATE `franquicias` SET logo = '%s' WHERE idfranquicia = '%s'";
+
 		$query = sprintf($query,
 			//mysql_real_escape_string($_POST["idfranquicia"]),
 			mysql_real_escape_string($newfilename),//imagen
@@ -116,7 +117,9 @@ if ('GET' === $method) {
 					"filename" => $newfilename
 					//"filename" => $_FILES['file']['name'],
 				));
-		}
+		}else{
+		    var_dump($query);
+        }
 
 
 

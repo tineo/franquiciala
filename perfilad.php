@@ -112,8 +112,28 @@ if (session_status() == PHP_SESSION_NONE) {
 
           <div class="col-sm-4">
 
-              <div class="col-md-8 col-sm-12" style="padding:5px;">Logo de la Marca:<br><input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true"></div>
+              <div class="row">
+                  <div class="col-sm-12" style="padding:5px;">
+                      <div class="col-sm-12" style="padding:5px;">
+                          <button id="btn-logo" class="btn btn-warning">Subir Logo</button>
+                      </div>
+                  </div>
+              </div>
 
+              <div id="zona3" class="row"></div>
+
+              <!--<div class="col-md-8 col-sm-12" style="padding:5px;">Logo de la Marca:<br><input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="false" data-show-caption="true"></div>-->
+
+              <div class="dz-preview dz-file-preview" id="template-preview2" style="display: none">
+                  <div class="dz-details col-xs-3" style="padding:5px;">
+                      <img class="img-thumbnail" data-dz-thumbnail />
+                  </div>
+
+                  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+                  <div class="dz-success-mark"><span>✔</span></div>
+                  <div class="dz-error-mark"><span>✘</span></div>
+                  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+              </div>
           </div>
 
       </div>
