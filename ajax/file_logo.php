@@ -70,25 +70,35 @@ if ('GET' === $method) {
 
 	if (!empty($_FILES)) {
 
-		$tempFile = $_FILES['file']['tmp_name'];
-		$path = $_FILES['file']['name'];//3
-		$ext = pathinfo($path, PATHINFO_EXTENSION);
-		$newfilename = $_POST['uuid']. ".".$ext;
-		$targetPath = dirname( __FILE__ ) . $ds. $storeFolder . $ds;  //4
+        $tempFile = $_FILES['file']['tmp_name'];
+        $path = $_FILES['file']['name'];//3
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+        $newfilename = $_POST['uuid'] . "." . $ext;
+        $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;  //4
 
-		//$targetFile =  $targetPath. $_FILES['file']['name'];  //5
-		$targetFile =  $targetPath. $newfilename;  //5
+        //$targetFile =  $targetPath. $_FILES['file']['name'];  //5
+        $targetFile = $targetPath . $newfilename;  //5
 
-		move_uploaded_file($tempFile,$targetFile); //6
+        move_uploaded_file($tempFile, $targetFile); //6
 
-		require '../vendor/autoload.php';
+        require '../vendor/autoload.php';
+
+        list($width, $height) = getimagesize($targetFile);
+
+        $x = 230;
+        $y = 100;
+
+        $a = $width / $x;
+        $b = $height / $y;
+
+        if($a > $b) { $m = $a * $x; $n = $a * $y; } else { $m = $b * $x; $n = $b * $y; }
 
 		try {
 			$image = new \claviska\SimpleImage();
 			$image
 				->fromFile($targetFile)
 				->autoOrient()
-				->thumbnail(230, 100)
+				->thumbnail(intval($m), intval($n))
 				->toFile($targetFile);
 		} catch(Exception $err) {
 
