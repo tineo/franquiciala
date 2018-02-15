@@ -27,6 +27,8 @@ if(isset($_POST["uname"])&&isset($_POST["pswd"])){
     	http_response_code(403);
     }
 
+  }else{
+      http_response_code(403);
   }
 }else{
 	http_response_code(404);

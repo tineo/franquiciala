@@ -71,16 +71,21 @@ function myFunction() {
         			
         			<div class="modal-body">
         				
-	                    <form role="form" action="perfilad.php" method="post" class="login-form">
+	                    <form role="form" class="login-form" id="login-frm">
+
+                            <div class="alert alert-danger" role="alert" id="login-alerta" style="display: none">
+                                Usuario y/o contraseña incorrecta
+                            </div>
+
 	                    	<div class="form-group">
 	                    		<label class="sr-only" for="form-username">Usuario</label>
-	                        	<input type="text" name="form-username" placeholder="Usuario..." class="form-username form-control" id="form-username">
+	                        	<input type="text" name="form-username" placeholder="Usuario..." class="form-username form-control" id="form-username" required />
 	                        </div>
 	                        <div class="form-group">
 	                        	<label class="sr-only" for="form-password">Contraseña</label>
-	                        	<input type="password" name="form-password" placeholder="Contrase&ntilde;a..." class="form-password form-control" id="form-password">
+	                        	<input type="password" name="form-password" placeholder="Contrase&ntilde;a..." class="form-password form-control" id="form-password" required />
 	                        </div>
-	                        <button type="submit" class="btn btn-danger">Ingresar Ahora ;)</button>
+	                        <button class="btn btn-danger" id="logenvia">Ingresar Ahora ;)</button>
 	                    </form>
 	                    
         			</div>			

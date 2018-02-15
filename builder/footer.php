@@ -34,26 +34,53 @@
 <script type="text/javascript">
 
   $(function(){
+      const element = document.querySelector('form');
+      element.addEventListener('submit', event => {
+          event.preventDefault();
+      // actual logic, e.g. validate the form
+      console.log('Form submission cancelled.');
+        });
+
+
     var u = $("#form-username");
     var p = $("#form-password");
 
-    var $myForm = $('.login-form');
+    var $myForm = $('#login-frm');
 
-    $(".login-form button").on("click",function(event){
-      if ($myForm[0].checkValidity()) {
-        event.preventDefault();
+    $("#logenvia").on("click",function(event){
+            event.preventDefault();
+            //alert($myForm[0].checkValidity())
+          if ($myForm[0].checkValidity()) {
+            $.ajax({
+              method: "POST",
+              url: "ajax/login.php",
+              data: { uname: u.val(), pswd: p.val() }
+              ,statusCode: {
+                    200: function(data) {
+                        //alert( "page not found 200" );
+                        window.location.replace("http://"+window.location.host+"/perfilad.php");
+                    },403: function(data) {
+                        //alert( "page not found 403" );
+                        $("#login-alerta").fadeIn();
+                    },404: function(data) {
+                        //alert( "page not found 404" );
+                    }
+                }
+            })
+                /*.done(function (data) {
+                console.log("done")
+                console.log(data)
+              //
+            }).error(function (data) {
+                console.log("error")
+                console.log(data)
+            })*/;
+            //alert("ajax sent");
+            //console.log(u.val());
+            //console.log(p.val());
+          }
 
-        $.ajax({
-          method: "POST",
-          url: "ajax/login.php",
-          data: {uname: u.val(), pswd: p.val()}
-        }).done(function (data) {
-          window.location.replace("http://"+window.location.host+"/perfilad.php");
-        });
-
-        //console.log(u.val());
-        //console.log(p.val());
-      }
+      return false;
     });
   });
 </script>
