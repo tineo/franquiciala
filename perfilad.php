@@ -115,7 +115,7 @@ if (session_status() == PHP_SESSION_NONE) {
               <div class="row">
                   <div class="col-sm-12" style="padding:5px;">
                       <div class="col-sm-12" style="padding:5px;">
-                          <button id="btn-logo" class="btn btn-warning">Subir Logo</button>
+                          <a id="btn-logo" class="btn btn-warning" href="#">Subir Logo</a>
                       </div>
                   </div>
               </div>
