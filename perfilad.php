@@ -445,6 +445,9 @@ $(function(){
     $("#btn-galeria").on('click',function(event) {
         if ($myForm[0].checkValidity()) {
             event.preventDefault();}});
+    $("#btn-logo").on('click',function(event) {
+        if ($myForm[0].checkValidity()) {
+            event.preventDefault();}});
 </script>
 
 </html> 
