@@ -45,6 +45,28 @@ if ('GET' === $method) {
 	//var_dump($_DELETE);
 	include "../rutadb.php";
 
+    $query = "SELECT descripcionfoto as foto FROM `franquicias` WHERE `descripcionfoto` LIKE '%s' ";
+    $query = sprintf( $query,
+        //mysql_real_escape_string($_GET["idfranquicia"]),
+        mysql_real_escape_string( $_DELETE["uuid"]."%" )
+    );
+    $resultado = mysql_query($query,$conexion);
+
+    $data = array();
+    if ($fila = mysql_fetch_array($resultado))
+    {
+        $data = array( "foto" => $fila["foto"]);
+        $query = "UPDATE `franquicias` SET descripcionfoto = '' WHERE `idfranquicia` = '%s' ";
+        $query = sprintf( $query,
+            //mysql_real_escape_string( $_POST["foto"] ),
+            mysql_real_escape_string( $_SESSION['fid'] )
+        );
+        $resultado = mysql_query($query,$conexion);
+    }
+
+
+
+
 	$query = "DELETE FROM `fotosgal` WHERE enlace LIKE '%s' ";
 	$query = sprintf($query,
 		//mysql_real_escape_string($_POST["idfranquicia"]),

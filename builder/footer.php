@@ -50,6 +50,15 @@
     $("#logenvia").on("click",function(event){
             event.preventDefault();
             //alert($myForm[0].checkValidity())
+
+            if(u.val() == "" && p.val() == ""){
+                $("#login-alerta").text("Usuario y contraseñas no pueden estar vacios");
+                $("#login-alerta").fadeIn();
+            }else if(u.val() != "" && p.val() == ""){
+                $("#login-alerta").text("Ingresa una contraseña");
+                $("#login-alerta").fadeIn();
+            }
+
           if ($myForm[0].checkValidity()) {
             $.ajax({
               method: "POST",
@@ -61,6 +70,7 @@
                         window.location.replace("http://"+window.location.host+"/perfilad.php");
                     },403: function(data) {
                         //alert( "page not found 403" );
+                        $("#login-alerta").text("Usuario y/o contraseña incorrecta");
                         $("#login-alerta").fadeIn();
                     },404: function(data) {
                         //alert( "page not found 404" );
@@ -84,3 +94,10 @@
     });
   });
 </script>
+
+<style>
+
+    .foto-selected{
+        border-color: #c1984e;
+    }
+</style>

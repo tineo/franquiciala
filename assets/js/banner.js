@@ -5,7 +5,7 @@ var dropzoneOptions2 = {
   url: "/ajax/file_banner.php",
   paramName: "file", // The name that will be used to transfer the file
   maxFilesize: 2, // MB
-
+    dictRemoveFileConfirmation:  "Deseas eliminar esta imagen?",
   //accept: function(file, done) {
   //  file.acceptDimensions = done;
   //  file.rejectDimensions = function() { done("Image too small."); };

@@ -12,9 +12,38 @@ var dropzoneOptions = {
   //},
   previewTemplate: document.getElementById('template-preview').innerHTML,
   addRemoveLinks: true,
+    dictRemoveFileConfirmation:  "Deseas eliminar esta imagen?",
   init: function() {
     this.on("addedfile", function(file) {
       //alert("Added file.");
+        //console.log($(this));
+        file.previewElement.addEventListener("click", function(evt) {
+            //console.log(file);
+            console.log(file);
+            console.log(file.upload.uuid);
+            console.log($(this));
+            var fileExt = file.upload.filename.split('.').pop();
+
+            //console.log($(this));
+            //console.log($(this).name);
+            //myDropzone.removeFile(file);
+
+            if(!$(evt.target).hasClass("icon-remove")) {
+                $(".foto-selected").removeClass("foto-selected");
+                $("img[alt='" + file.name + "']").addClass("foto-selected");
+                $.ajax({
+                    type: 'POST',
+                    url: '/ajax/file_select.php',
+                    data: {
+                        "foto": file.upload.uuid + "." + fileExt
+                    },
+                    success: function (data) {
+                        console.log(data)
+                    }
+                })
+            }
+
+        });
     });
     this.on("removedfile", function(file) {
       //alert("Removed file.");
@@ -40,9 +69,9 @@ var dropzoneOptions = {
       formData.append('uuid', file.upload.uuid);
     });
 
-    /*this.on("thumbnail", function(file) {
+    this.on("thumbnail", function(file) {
       // Do the dimension checks you want to do
-      console.log('file.width')
+      /*console.log('file.width')
       console.log(file.width)
       console.log('file.height')
       console.log(file.height)
@@ -51,8 +80,10 @@ var dropzoneOptions = {
       }
       else {
         file.acceptDimensions();
-      }
-    });*/
+      }*/
+      console.log(file);
+
+    });
     this.on("success", function(file, serverResponse) {
       // Called after the file successfully uploaded.
       console.log("success");
@@ -89,6 +120,44 @@ $.ajax({
       myDropzone.options.addedfile.call(myDropzone, mockFile);
       myDropzone.files.push(mockFile);
       myDropzone.options.thumbnail.call(myDropzone, mockFile, "/img/galeria/"+obj.base);
+
     }
   }
+}).then(function () {
+
+    $(".dz-details img").on('click', function (evt) {
+        console.log($(this).attr("alt"));
+        console.log(evt);
+        console.log($(evt.target).hasClass("icon-remove"))
+
+        if(!$(evt.target).hasClass("icon-remove")){
+        $(".foto-selected").removeClass("foto-selected");
+        $(this).addClass("foto-selected");
+
+        $.ajax({
+            type:'POST',
+            url:'/ajax/file_select.php',
+            data : {
+                "foto" : $(this).attr("alt")
+            },
+            success : function (data) {
+                console.log(data)
+
+
+            }
+        })
+        }
+    });
+}).then(function () {
+
+    $.ajax({
+        type:'GET',
+        url:'/ajax/file_select.php',
+        success : function (data) {
+            console.log(data.foto)
+            $("img[alt='"+data.foto+"']").addClass("foto-selected");
+
+        }
+    })
+
 });

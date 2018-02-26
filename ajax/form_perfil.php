@@ -56,7 +56,7 @@ if(
 	include "../rutadb.php";
 	header('Content-Type: application/json');
 
-	$query = "UPDATE `franquicias` SET descripcion = '%s', correo = '%s', video = '%s'   WHERE idfranquicia = '%s'";
+	$query = "UPDATE `franquicias` SET descripcion = '%s', correo = '%s', video = '%s', pagweb = '%s'   WHERE idfranquicia = '%s'";
 	$query = sprintf($query,
 		mysql_real_escape_string($_POST["descripcion"]),
 		mysql_real_escape_string($_POST["correo"]),
