@@ -13,15 +13,14 @@ $storeFolder = '../img/galeria';
 $method = $_SERVER['REQUEST_METHOD'];
 session_start();
 if('POST' === $method){
-//descripcionfoto
-
+    //descripcionfoto
     $targetPath = dirname(__FILE__) . $ds . $storeFolder . $ds;
-    $targetFile = $_POST["foto"];
-
+    $targetFile = $targetPath. $_POST["foto"];
+    //echo $targetPath. $_POST["foto"]."<br />". $targetPath. "mini_". $_POST["foto"];
     include "../rutadb.php";
     $query = "UPDATE `franquicias` SET descripcionfoto = '%s' WHERE `idfranquicia` = '%s' ";
     $query = sprintf( $query,
-        mysql_real_escape_string( "mini_".$targetFile ),
+        mysql_real_escape_string( $_POST["foto"] ),
         mysql_real_escape_string( $_SESSION['fid'] )
     );
     $resultado = mysql_query($query,$conexion);
@@ -33,21 +32,22 @@ if('POST' === $method){
     $x = 370;
     $y = 247;
 
-    $a = $width / $x;
-    $b = $height / $y;
+    //$a = $width / $x;
+    //$b = $height / $y;
 
-    if($a > $b) { $m = $a * $x; $n = $a * $y; } else { $m = $b * $x; $n = $b * $y; }
+    //if($a > $b) { $m = $a * $x; $n = $a * $y; } else { $m = $b * $x; $n = $b * $y; }
 
     try {
-
+        //if (!copy($targetPath. $_POST["foto"], $targetPath."mini_". $_POST["foto"])) {
 
         $image = new \claviska\SimpleImage();
         $image
-            ->fromFile($targetFile)
+            ->fromFile($targetPath. $_POST["foto"])
             ->autoOrient()
-            ->resize($x,$y)
-            ->thumbnail(intval($m), intval($n))
-            ->toFile("mini_".$targetFile);
+            //->resize($x,$y)
+            ->thumbnail($x,$y)
+            ->toFile($targetPath."mini_". $_POST["foto"]);
+        //}
     } catch(Exception $err) {
 
         echo $err->getMessage();

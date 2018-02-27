@@ -150,7 +150,7 @@
   </div>
 
   <div>
-    <img src="img/galeria/<? echo $perfil['descripcionfoto']; ?>" class="img-responsive" style="float:left; padding:0 15px 15px 0;">
+    <img src="img/galeria/mini_<? echo $perfil['descripcionfoto']; ?>" class="img-responsive" style="float:left; padding:0 15px 15px 0;">
     <span class="titFran"><? echo $perfil['nombre']; ?></span>
     <br><br>
     <span class="descFran"><? echo $perfil['descripcion']; ?></span>
