@@ -141,7 +141,7 @@
 	{ ?>
 <!--contenido-->
 <div class="container">
-  <div style="padding:25px;"  class="row">
+  <div class="row">
     <span class="fa-stack fa-2x" style="color:#fc9a00;">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-info fa-stack-1x fa-inverse"></i>
@@ -149,7 +149,7 @@
     <span style="font-size:24px; ">Descripci&oacute;n</span>
   </div>
 
-  <div class="row">
+  <div class="row" style="padding:25px;">
     <img src="img/galeria/mini_<? echo $perfil['descripcionfoto']; ?>" class="img-responsive" style="float:left; padding:0 15px 15px 0;">
     <span class="titFran"><? echo $perfil['nombre']; ?></span>
     <br><br>
