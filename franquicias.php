@@ -141,7 +141,7 @@
 	{ ?>
 <!--contenido-->
 <div class="container">
-  <div class="row">
+  <div class="row"  class="row" style="padding-left:25px;">
     <span class="fa-stack fa-2x" style="color:#fc9a00;">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-info fa-stack-1x fa-inverse"></i>
