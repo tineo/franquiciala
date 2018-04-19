@@ -15,6 +15,14 @@ var dropzoneOptions2 = {
   init: function() {
     this.on("totaluploadprogress", function(progress) {
 
+
+      var last = $(this).get(0).element.lastChild;
+      $(last).find(".img-thumbnail")
+          .attr("src","/img/loader5.gif")
+      //.width(50);
+      console.log($(last).find(".img-thumbnail")
+          .attr("src"));
+
       /*console.log($(this));
 
       var last = $(this).get(0).element.lastChild;
@@ -31,12 +39,7 @@ var dropzoneOptions2 = {
     this.on("addedfile", function(file) {
       //alert("Added file.");
 
-      var last = $(this).get(0).element.lastChild;
-      $(last).find(".img-thumbnail")
-          .attr("src","/img/loader5.gif")
-      //.width(50);
-      console.log($(last).find(".img-thumbnail")
-          .attr("src"));
+
     });
     this.on("removedfile", function(file) {
       //alert("Removed file.");
