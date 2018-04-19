@@ -1,5 +1,7 @@
 var minImageWidth = 500,
     minImageHeight = 405;
+
+var isUp = false;
 var dropzoneOptions2 = {
   clickable: '#btn-banner',
   url: "/ajax/file_banner.php",
@@ -16,13 +18,14 @@ var dropzoneOptions2 = {
     this.on("totaluploadprogress", function(progress) {
 
 
-      var last = $(this).get(0).element.lastChild;
-      $(last).find(".img-thumbnail")
-          .attr("src","/img/loader5.gif")
-      //.width(50);
-      console.log($(last).find(".img-thumbnail")
-          .attr("src"));
-
+      if (isUp) {
+        var last = $(this).get(0).element.lastChild;
+        $(last).find(".img-thumbnail")
+            .attr("src", "/img/loader5.gif")
+        //.width(50);
+        console.log($(last).find(".img-thumbnail")
+            .attr("src"));
+      }
       /*console.log($(this));
 
       var last = $(this).get(0).element.lastChild;
@@ -38,6 +41,7 @@ var dropzoneOptions2 = {
 
     this.on("addedfile", function(file) {
       //alert("Added file.");
+      isUp = true;
 
 
     });
@@ -92,6 +96,7 @@ var dropzoneOptions2 = {
 
       // If it needs resizing:
       this.createThumbnailFromUrl(file,  "/img/banners/" + serverResponse.filename);
+      isUp = false;
     });
   }
 
