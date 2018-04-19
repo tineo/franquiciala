@@ -20,7 +20,7 @@ var dropzoneOptions = {
       if (isUp) {
         var last = $(this).get(0).element.lastChild;
         $(last).find(".img-thumbnail")
-            .attr("src", "/img/loader6.gif")
+            .attr("src", "/img/loader2.gif")
         //.width(50);
         console.log($(last).find(".img-thumbnail")
             .attr("src"));
