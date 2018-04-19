@@ -252,7 +252,7 @@ if (session_status() == PHP_SESSION_NONE) {
               <div class="dz-preview dz-file-preview" id="template-preview" style="display: none">
                   <div class="dz-details col-xs-3" style="padding:5px;">
                       <img src="https://cdn2.iconfinder.com/data/icons/files-folders-1/130/Trash-512.png" alt="Click me to remove the file." class="icon-remove" data-dz-remove />
-                      <img class="img-thumbnail" data-dz-thumbnail />
+                      <img class="img-thumbnail" data-dz-thumbnail src="/img/loader5.gif"/>
                   </div>
 
                   <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>

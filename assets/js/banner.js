@@ -29,7 +29,7 @@ var dropzoneOptions2 = {
     });
 
     this.on("addedfile", function(file) {
-      alert("Added file.");
+      //alert("Added file.");
 
       var last = $(this).get(0).element.lastChild;
       $(last).find(".img-thumbnail")
@@ -56,8 +56,6 @@ var dropzoneOptions2 = {
 
     });
     this.on('sending', function(file, xhr, formData){
-
-      console.log($(this));
 
 
       console.log($(this));
