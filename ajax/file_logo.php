@@ -132,6 +132,7 @@ if ('GET' === $method) {
 			$image
 				->fromFile($targetFile)
 				->autoOrient()
+				->bestFit(230, 100)
                 #->resize($x,$y)
 				#->thumbnail(intval($m), intval($n))
 				->toFile($targetFile);
