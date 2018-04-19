@@ -13,6 +13,21 @@ var dropzoneOptions2 = {
   previewTemplate: document.getElementById('template-preview').innerHTML,
   addRemoveLinks: true,
   init: function() {
+    this.on("totaluploadprogress", function(progress) {
+
+      console.log($(this));
+
+      var last = $(this).get(0).element.lastChild;
+      $(last).find(".img-thumbnail")
+          .attr("src","/img/loader5.gif")
+          //.width(50);
+          console.log($(last).find(".img-thumbnail")
+          .attr("src"));
+      console.log(progress);
+
+
+    });
+
     this.on("addedfile", function(file) {
       //alert("Added file.");
     });
@@ -34,6 +49,7 @@ var dropzoneOptions2 = {
 
     });
     this.on('sending', function(file, xhr, formData){
+      console.log($(this));
       console.log("sending");
       console.log(file);
       //console.log(file.upload.uuid);
