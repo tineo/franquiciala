@@ -23,13 +23,20 @@ var dropzoneOptions2 = {
           //.width(50);
           console.log($(last).find(".img-thumbnail")
           .attr("src"));*/
-      console.log(progress);
+      //console.log(progress);
 
 
     });
 
     this.on("addedfile", function(file) {
-      //alert("Added file.");
+      alert("Added file.");
+
+      var last = $(this).get(0).element.lastChild;
+      $(last).find(".img-thumbnail")
+          .attr("src","/img/loader5.gif")
+      //.width(50);
+      console.log($(last).find(".img-thumbnail")
+          .attr("src"));
     });
     this.on("removedfile", function(file) {
       //alert("Removed file.");
@@ -52,12 +59,6 @@ var dropzoneOptions2 = {
 
       console.log($(this));
 
-      var last = $(this).get(0).element.lastChild;
-      $(last).find(".img-thumbnail")
-          .attr("src","/img/loader5.gif")
-      //.width(50);
-      console.log($(last).find(".img-thumbnail")
-          .attr("src"));
 
       console.log($(this));
       console.log("sending");
