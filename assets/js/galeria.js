@@ -1,5 +1,7 @@
 var minImageWidth = 500,
     minImageHeight = 405;
+
+var isUp = false;
 var dropzoneOptions = {
   clickable: '#btn-galeria',
   url: "/ajax/file_gallery.php",
@@ -14,8 +16,20 @@ var dropzoneOptions = {
   addRemoveLinks: true,
     dictRemoveFileConfirmation:  "Deseas eliminar esta imagen?",
   init: function() {
+    this.on("totaluploadprogress", function(progress) {
+      if (isUp) {
+        var last = $(this).get(0).element.lastChild;
+        $(last).find(".img-thumbnail")
+            .attr("src", "/img/loader6.gif")
+        //.width(50);
+        console.log($(last).find(".img-thumbnail")
+            .attr("src"));
+      }
+    });
+
     this.on("addedfile", function(file) {
       //alert("Added file.");
+      isUp = true;
         //console.log($(this));
         file.previewElement.addEventListener("click", function(evt) {
             //console.log(file);
@@ -95,6 +109,7 @@ var dropzoneOptions = {
 
       // If it needs resizing:
       this.createThumbnailFromUrl(file,  "/img/galeria/" + serverResponse.filename);
+      isUp = false;
     });
   }
 

@@ -1,5 +1,7 @@
 var minImageWidth = 500,
     minImageHeight = 405;
+
+var isUp = false;
 var currentFile = null;
 var dropzoneOptions3 = {
   clickable: '#btn-logo',
@@ -15,7 +17,19 @@ var dropzoneOptions3 = {
   addRemoveLinks: false,
   maxFiles: 1,
   init: function() {
+    this.on("totaluploadprogress", function(progress) {
+      if (isUp) {
+        var last = $(this).get(0).element.lastChild;
+        $(last).find(".img-thumbnail")
+            .attr("src", "/img/loader6.gif")
+        //.width(50);
+        console.log($(last).find(".img-thumbnail")
+            .attr("src"));
+      }
+    });
+
     this.on("addedfile", function(file) {
+      isUp = true;
       //alert("Added file.");
         if (currentFile) {
             this.removeFile(currentFile);
@@ -71,6 +85,7 @@ var dropzoneOptions3 = {
 
       // If it needs resizing:
       this.createThumbnailFromUrl(file,  "/img/logos-clientes/" + serverResponse.filename);
+      isUp = false;
     });
   }
 
